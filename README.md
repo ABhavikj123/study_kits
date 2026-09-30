@@ -49,14 +49,14 @@ GEMINI_API_KEY=your-key
 ### Frontend environment (`frontend/.env.local`)
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
 ```
 
 ### Production
 
 - Deploy the frontend to Vercel.
 - Deploy the backend to any Node host with long-lived HTTP response support.
-- Set `FRONTEND_URL` to the exact Vercel origin and `NEXT_PUBLIC_API_URL` to the backend's public HTTPS origin.
+- Set `FRONTEND_URL` to the exact Vercel origin and `NEXT_PUBLIC_BACKEND_URL` to the backend's public HTTPS origin.
 - Configure MongoDB network access for the backend host.
 - Use a strong `COOKIE_SECRET`.
 - Set `NODE_ENV=production` (cookies then become `Secure`).
