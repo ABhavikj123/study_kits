@@ -1,6 +1,9 @@
-const API_URL = (
-  process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'
-).replace(/\/$/, '');
+const API_URL =
+  process.env.NODE_ENV === 'development'
+    ? (process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000')
+    : '';
+
+const BASE_URL = API_URL.replace(/\/+$/, '');
 
 export class ApiError extends Error {
   constructor(
@@ -22,7 +25,7 @@ export async function api<T>(
 ): Promise<T> {
   for (let attempt = 0; ; attempt += 1) {
     try {
-      const response = await fetch(`${API_URL}/api${path}`, {
+      const response = await fetch(`${BASE_URL}/api${path}`, {
         ...options,
         credentials: 'include',
         headers: {
@@ -57,4 +60,4 @@ export async function api<T>(
 }
 
 export const streamUrl = (kitId: string) =>
-  `${API_URL}/api/kits/${kitId}/stream`;
+  `${BASE_URL}/api/kits/${kitId}/stream`;

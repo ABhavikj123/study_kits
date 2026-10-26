@@ -1,0 +1,9 @@
+
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://study-kits-vt7v.vercel.app/api/:path*"
+    }
+  ]
+}
