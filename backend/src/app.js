@@ -33,3 +33,5 @@ app.use((error, _req, res, _next) => {
   if (process.env.NODE_ENV !== 'test' && !(error instanceof ApiError)) console.error(error);
   return sendError(res, error);
 });
+
+export default app;
